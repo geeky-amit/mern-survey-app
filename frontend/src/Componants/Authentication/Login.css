@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap");
+.login-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #6ed4ff;
+  display: flex;
+  justify-content: space-between;
+}
+
+.register-box {
+  width: 320px;
+  margin-left: 166px;
+  margin-top: 200px;
+}
+
+.signin-box {
+  width: 450px;
+  height: 510px;
+  margin-right: 100px;
+  margin-top: 150px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 30px #00000029;
+  border-radius: 41px;
+  opacity: 1;
+}
+
+.p1-text {
+  font-family: Montserrat-Bold;
+  font-weight: 700;
+  font-size: 48px;
+  margin: 0;
+  color: #5c5c5c;
+  text-align: left;
+  letter-spacing: 0.47px;
+  opacity: 1;
+}
+
+.p2-text {
+  margin-top: 0;
+  font-family: Montserrat-Bold;
+  font-weight: 700;
+  font-size: 48px;
+  margin-top: 10px;
+  margin-bottom: 0;
+  text-align: left;
+  letter-spacing: 0.47px;
+  color: #5c5c5c;
+  opacity: 1;
+}
+
+.p3-text {
+  font-family: Montserrat-Regular;
+  font-weight: 400;
+  /* padding-left: 8px; */
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 0;
+  text-align: left;
+  letter-spacing: 0.48px;
+  color: #5c5c5c;
+  opacity: 1;
+}
+
+.p4-text {
+  margin-top: 90px;
+  text-align: left;
+
+  font: normal normal normal Avenir;
+  font-size: 14px;
+  letter-spacing: 0.64px;
+  color: #565657;
+  text-transform: capitalize;
+  opacity: 1;
+}
+
+.register-btn {
+  text-align: left;
+}
+
+.reg-btn {
+  background: #278df1 0% 0% no-repeat padding-box;
+  border-radius: 28px;
+  opacity: 0.79;
+  height: 45px;
+  width: 180px;
+  text-align: center;
+  font: normal normal bold 18px/22px Montserrat;
+  font-size: 16px;
+  letter-spacing: 1.8px;
+  color: #ffffff;
+  opacity: 1;
+  border: none;
+}
+
+.sign-p1-text {
+  font-family: Montserrat-Bold;
+  font-weight: 700;
+  font-size: 48px;
+  margin-top: 70px;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  text-align: center;
+  letter-spacing: 0.47px;
+  color: #000000;
+  opacity: 1;
+}
+.sign-p2-text {
+  margin-top: 20px;
+  margin-bottom: 0;
+  font-family: Montserrat-Regular;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 0.4px;
+  color: #808080;
+  opacity: 1;
+}
+
+.form-box {
+  margin-top: 50px;
+  width: 350px;
+}
+
+input[type="email"] {
+  border: none;
+  text-align: left;
+  font: normal normal normal 17px/27px Open Sans;
+  letter-spacing: 0.6px;
+  color: #77838f;
+  opacity: 1;
+}
+
+.form-line {
+  margin-top: 12px;
+  margin-left: 75px;
+  border: 1px solid #989898;
+  opacity: 1;
+  width: 280px;
+}
+
+input[type="password"] {
+  border: none;
+  margin-top: 36px;
+  margin-bottom: 0;
+  text-align: left;
+  font: normal normal normal 17px/27px Open Sans;
+  letter-spacing: 0.6px;
+  color: #77838f;
+  opacity: 1;
+}
+
+.signin-btn {
+  border: none;
+  width: 180px;
+  height: 45px;
+  margin-top: 60px;
+  background: #278df1 0% 0% no-repeat padding-box;
+  border-radius: 28px;
+  opacity: 0.79;
+  text-align: center;
+  font: normal normal bold 18px/22px Montserrat;
+  letter-spacing: 1.8px;
+  color: #ffffff;
+  opacity: 1;
+}
