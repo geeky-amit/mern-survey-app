@@ -1,0 +1,101 @@
+.signup-container {
+  height: 100vh;
+  width: 100vw;
+  background-color: #88d1f0;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.signup-box {
+  width: 670px;
+  height: 620px;
+  margin-right: 80px;
+  margin-top: 100px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 30px #00000029;
+  border-radius: 41px;
+  opacity: 1;
+}
+
+.input-container {
+  margin-left: 38px;
+}
+
+input[type="password"] {
+  margin-left: 0;
+}
+
+.profession-container {
+  margin-top: 36px;
+}
+
+input {
+  border: none;
+  text-align: left;
+  margin-left: 0;
+  width: 95%;
+  font: normal normal normal 17px/27px Open Sans;
+  letter-spacing: 0.6px;
+  color: #77838f;
+  opacity: 1;
+  margin-bottom: 0;
+}
+
+input[type="email"] {
+  margin-left: 0;
+}
+
+input[type="tel"] {
+  margin-top: 36px;
+}
+
+.form-container {
+  margin-top: 60px;
+  margin-right: 35px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-line-signup {
+  margin-top: 12px;
+  margin-left: 35px;
+  border: 1px solid #989898;
+  opacity: 1;
+  width: 230px;
+}
+
+.term {
+  margin-top: 45px;
+  margin-left: 130px;
+  margin-bottom: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.term-text {
+  text-align: left;
+  text-decoration: underline;
+  font: normal normal normal 14px/20px Open Sans;
+  font-size: 12px;
+  letter-spacing: 0.49px;
+  color: #53a4f4;
+  opacity: 1;
+}
+
+.term-img {
+}
+
+.signup-btn {
+  border: none;
+  width: 180px;
+  height: 45px;
+  margin-top: 10px;
+  background: #278df1 0% 0% no-repeat padding-box;
+  border-radius: 28px;
+  opacity: 0.79;
+  text-align: center;
+  font: normal normal bold 18px/22px Montserrat;
+  letter-spacing: 1.8px;
+  color: #ffffff;
+  opacity: 1;
+}

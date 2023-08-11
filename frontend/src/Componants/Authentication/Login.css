@@ -2,9 +2,10 @@
 .login-container {
   height: 100vh;
   width: 100vw;
-  background-color: #6ed4ff;
+  background-color: #88d1f0;
   display: flex;
   justify-content: space-between;
+  text-align: center;
 }
 
 .register-box {
@@ -14,7 +15,7 @@
 }
 
 .signin-box {
-  width: 450px;
+  width: 500px;
   height: 510px;
   margin-right: 100px;
   margin-top: 150px;
@@ -122,6 +123,8 @@
 
 input[type="email"] {
   border: none;
+  width: 100%;
+  margin-left: 80px;
   text-align: left;
   font: normal normal normal 17px/27px Open Sans;
   letter-spacing: 0.6px;
@@ -134,11 +137,17 @@ input[type="email"] {
   margin-left: 75px;
   border: 1px solid #989898;
   opacity: 1;
-  width: 280px;
+  width: 330px;
+}
+.input-container-signin {
+  margin-left: 80px;
+  width: 315px;
 }
 
 input[type="password"] {
   border: none;
+  width: 100%;
+  margin-left: 80px;
   margin-top: 36px;
   margin-bottom: 0;
   text-align: left;
