@@ -20,6 +20,7 @@
 }
 
 .profile-container {
+  margin: 0;
   margin-top: 16px;
   margin-right: 90px;
   display: flex;
@@ -27,6 +28,7 @@
 }
 
 .img-container {
+  margin: 0;
   height: 25px;
   width: 25px;
   border-radius: 50%;

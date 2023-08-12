@@ -3,37 +3,6 @@
   display: flex;
 }
 
-.side-header {
-  width: 55px;
-  height: 92.7vh;
-  margin-right: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 18px;
-  background: #278df1 0% 0% no-repeat padding-box;
-  opacity: 1;
-}
-
-.icon {
-  padding-left: 15px;
-  height: 20px;
-  width: 20px;
-}
-
-.user-icon-container {
-  background-color: #ffffff;
-  height: 35px;
-  width: 100%;
-}
-
-.user-icon {
-  padding-top: 5px;
-  padding-right: 14px;
-  height: 25px;
-  width: 25px;
-}
-
 .home-container {
   margin-left: 100px;
   margin-top: 50px;
@@ -45,7 +14,7 @@
 .home-header {
   display: flex;
   justify-content: space-between;
-  height: 55px;
+  height: 35px;
   width: 100%;
 }
 
@@ -103,12 +72,6 @@
   background: transparent url("../../Assets/filter-focus.svg") 0% 0% no-repeat;
 }
 
-/* .btn-container {
-  height: 40px;
-  width: 100px;
-  
-} */
-
 .bar-btn {
   width: 100px;
   height: 30px;
@@ -121,5 +84,56 @@
   letter-spacing: 0px;
   color: #ffffff;
   text-transform: uppercase;
+  opacity: 1;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0;
+  margin-top: 30px;
+  height: 55px;
+
+  /*  */
+}
+table {
+  padding-top: 10px;
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  font: normal normal 600 18px/24px Open Sans;
+  letter-spacing: 0.54px;
+  color: #081838;
+  opacity: 1;
+}
+
+.menu-item-container {
+  margin: 0;
+  margin-top: 10px;
+  padding: 10px;
+  height: 55px;
+  background: #f8faff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.table-data {
+  padding: 10px;
+  background: #fafdff 0% 0% no-repeat padding-box;
+  opacity: 1;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+td {
+  text-align: center;
+  font: normal normal 600 16px/22px Open Sans;
+  letter-spacing: 0.48px;
+  color: #4d4a4a;
   opacity: 1;
 }

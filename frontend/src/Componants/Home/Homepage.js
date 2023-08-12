@@ -1,21 +1,16 @@
 import React from "react";
 import Header from "../Header/Header";
-import homeIcon from "../../Assets/home-run.svg";
-import barIcon from "../../Assets/bars-solid.svg";
-import userIcon from "../../Assets/user-solid.png";
+import SideHeader from "../Header/SideHeader";
 
 import "./Homepage.css";
+import "../Header/SideHeader.css";
 const Homepage = () => {
   return (
     <>
       <Header />
       <div className="container">
-        <div className="side-header">
-          <img className="icon" src={homeIcon} alt="home-icon" />
-          <div className="user-icon-container">
-            <img className="icon user-icon" src={userIcon} alt="user-icon" />
-          </div>
-          <img className="icon" src={barIcon} alt="bar-icon" />
+        <div>
+          <SideHeader />
         </div>
 
         <div className="home-container">
@@ -36,6 +31,25 @@ const Homepage = () => {
               </div>
             </div>
           </div>
+
+          <table className="menu-container">
+            <tr className="menu-item-container">
+              <th>Name</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Actions</th>
+            </tr>
+            <tr className="table-data">
+              <td>Survey Name</td>
+              <td>This survey is about the topic</td>
+              <td>Video</td>
+              <td>10-Feb-2020</td>
+              <td>27-Feb-2020</td>
+              <td>Survey Name</td>
+            </tr>
+          </table>
         </div>
       </div>
     </>
