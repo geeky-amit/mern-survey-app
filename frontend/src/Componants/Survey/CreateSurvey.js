@@ -1,10 +1,13 @@
 import React from "react";
 import Header from "../Header/Header";
 import SideHeader from "../Header/SideHeader";
+import { useNavigate } from "react-router-dom";
+
 import "../Header/SideHeader.css";
 import "./CreateSurvey.css";
 
 const CreateSurvey = () => {
+  const navigate = useNavigate();
   return (
     <>
       <Header />
@@ -17,7 +20,11 @@ const CreateSurvey = () => {
               <p className="survey-text">Create Survey</p>
             </div>
             <div className="survey-btn-container">
-              <button type="button" className="cancel-btn">
+              <button
+                type="button"
+                className="cancel-btn"
+                onClick={() => navigate("/home")}
+              >
                 Cancel
               </button>
               <button type="button" className="next-btn" disabled>

@@ -44,15 +44,40 @@
   gap: 10px;
 }
 
+.theme-btn {
+  height: 36px;
+
+  background: #8a5def 0% 0% no-repeat padding-box;
+  border: 2px solid #8a5def;
+  border-radius: 4px;
+  opacity: 1;
+  display: flex;
+  gap: 8px;
+}
+.theme-gear > img {
+  padding-top: 6px;
+  height: 16px;
+  width: 16px;
+}
+.theme-btn-text {
+  padding-top: 4px;
+  text-align: center;
+  font: normal normal bold 14px/20px Open Sans;
+  letter-spacing: 0.15px;
+  color: #ffffff;
+  opacity: 1;
+}
+
 .prev-btn {
   height: 36px;
   width: 100px;
+
   background: #ffffff 0% 0% no-repeat padding-box;
   border: 2px solid #278df1;
   border-radius: 4px;
   opacity: 1;
   text-align: center;
-  font: normal normal bold 16px/22px Open Sans;
+  font: normal normal bold 14px/22px Open Sans;
   letter-spacing: 0.16px;
   color: #278df1;
   opacity: 1;
@@ -66,7 +91,7 @@
   border-radius: 4px;
   opacity: 1;
   text-align: center;
-  font: normal normal bold 16px/22px Open Sans;
+  font: normal normal bold 14px/22px Open Sans;
   letter-spacing: 0.16px;
   color: #ffffff;
   opacity: 1;
@@ -74,7 +99,7 @@
 
 .question-container-box {
   width: 100%;
-  height: 220px;
+  height: 200px;
   background: transparent url("../../Assets/Rectangle-qst.svg") 0% 0% no-repeat
     padding-box;
   border-radius: 8px 8px 0px 0px;
@@ -117,7 +142,7 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 20px;
 }
 
 .qst-label {
@@ -148,7 +173,6 @@
   justify-content: flex-start;
   gap: 10px;
   margin: 0;
-  margin-bottom: 15px;
 }
 
 input[type="radio"] {
@@ -156,9 +180,30 @@ input[type="radio"] {
 }
 
 .label-qst-text {
+  margin: 0;
   text-align: left;
   font: normal normal normal 16px/19px Open Sans;
   letter-spacing: 0.14px;
   color: #c3c3c4;
   opacity: 1;
+}
+
+.question-add {
+  display: flex;
+  justify-content: center;
+}
+
+.qst-add-btn {
+  width: 128px;
+  height: 28px;
+  background: #8c95af 0% 0% no-repeat padding-box;
+  border-radius: 4px;
+  opacity: 1;
+  text-align: center;
+  font: normal normal bold 16px/22px Open Sans;
+  letter-spacing: 0.16px;
+  color: #ffffff;
+  opacity: 1;
+  border: none;
+  font-size: 12px;
 }
