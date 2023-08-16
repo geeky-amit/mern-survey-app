@@ -1,13 +1,114 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../Header/Header";
 import SideHeader from "../Header/SideHeader";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToast } from "@chakra-ui/react";
 
 import "../Header/SideHeader.css";
 import "./CreateSurvey.css";
 
-const CreateSurvey = () => {
+const CreateSurvey = ({ user }) => {
   const navigate = useNavigate();
+
+  const toast = useToast();
+
+  const [name, setName] = useState();
+  const [description, setDescription] = useState();
+  const [typeOfSurvey, setTypeOfSurvey] = useState();
+  const [startDate, setStartDate] = useState();
+  const [endDate, setEndDate] = useState();
+  const [otherCriteria, setOtherCriteria] = useState();
+  const [surveyPicture, setSurveyPicture] = useState();
+
+  const imageHandler = (pic) => {
+    if (
+      pic.type === "image/jpeg" ||
+      pic.type === "image/png" ||
+      pic.type === "image/jpg"
+    ) {
+      const data = new FormData();
+      data.append("file", pic);
+      data.append("upload_preset", "survey-app");
+      data.append("cloud_name", "cocoamit");
+
+      fetch("https://api.cloudinary.com/v1_1/cocoamit/image/upload", {
+        method: "POST",
+        body: data
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setSurveyPicture(data.url.toString());
+        })
+        .catch((err) => console.log(err));
+    } else {
+      console.log("Something went wrong");
+      return;
+    }
+  };
+
+  const submitHandler = async () => {
+    if (
+      !name ||
+      !description ||
+      !typeOfSurvey ||
+      !startDate ||
+      !endDate ||
+      !surveyPicture
+    ) {
+      toast({
+        title: "Please fill all the fields",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`
+        }
+      };
+
+      await axios.post(
+        "http://localhost:5000/api/survey/createSurvey",
+        {
+          name,
+          description,
+          typeOfSurvey,
+          startDate,
+          endDate,
+          otherCriteria,
+          surveyPicture
+        },
+        config
+      );
+
+      toast({
+        title: "Survey Created Successfully!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+      navigate("/home/createSurvey/createQuestion");
+    } catch (error) {
+      toast({
+        title: `${error.response.data.message}!`,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+
+      console.log("Something went wrong", error);
+    }
+  };
+
   return (
     <>
       <Header />
@@ -27,7 +128,11 @@ const CreateSurvey = () => {
               >
                 Cancel
               </button>
-              <button type="button" className="next-btn" disabled>
+              <button
+                type="button"
+                className="next-btn"
+                onClick={submitHandler}
+              >
                 Next
               </button>
             </div>
@@ -42,6 +147,7 @@ const CreateSurvey = () => {
                     className="name-input"
                     type="text"
                     placeholder="Name here"
+                    onChange={(e) => setName(e.target.value)}
                   />
                 </div>
                 <div className="description-container">
@@ -50,12 +156,17 @@ const CreateSurvey = () => {
                     type="text"
                     placeholder="Description"
                     className="description-input"
+                    onChange={(e) => setDescription(e.target.value)}
                   />
                 </div>
                 <div className="survey-type-container">
                   <label>Type of Survey</label>
                   <div>
-                    <select className="survey-select" name="surveyType">
+                    <select
+                      className="survey-select"
+                      name="surveyType"
+                      onChange={(e) => setTypeOfSurvey(e.target.value)}
+                    >
                       <option value="none" selected disabled hidden>
                         Select
                       </option>
@@ -77,6 +188,8 @@ const CreateSurvey = () => {
                       className="date-input"
                       type="date"
                       name="start-date"
+                      placeholder="DD MM YYYY"
+                      onChange={(e) => setStartDate(e.target.value)}
                     />
                   </div>
                   <div>
@@ -86,6 +199,8 @@ const CreateSurvey = () => {
                         className="date-input"
                         type="date"
                         name="start-date"
+                        placeholder="DD MM YYYY"
+                        onChange={(e) => setEndDate(e.target.value)}
                       />
                     </div>
                   </div>
@@ -97,6 +212,7 @@ const CreateSurvey = () => {
                     type="text"
                     placeholder="Enter Here"
                     className="other-text"
+                    onChange={(e) => setOtherCriteria(e.target.value)}
                   />
                 </div>
                 <div className="upload-container">
@@ -104,9 +220,9 @@ const CreateSurvey = () => {
                   <input
                     className="file-input"
                     type="file"
-                    name="image"
-                    accept="image/*"
-                    placeholder="Upload"
+                    accept="image/"
+                    placeholder="Upload Image"
+                    onChange={(e) => imageHandler(e.target.files[0])}
                   />
                 </div>
               </form>

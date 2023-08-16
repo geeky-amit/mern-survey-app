@@ -1,11 +1,15 @@
 import React, { useState } from "react";
-import CD from "../../Assets/CD.svg";
+import box from "../../Assets/box.svg";
+import boxSolid from "../../Assets/box-solid.svg";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import "./Signup.css";
 import "./Login.css";
 
 const Signup = () => {
+  const toast = useToast();
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState();
@@ -13,10 +17,12 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const [tick, setTick] = useState(false);
+
   const navigate = useNavigate(true);
 
-  const submitHandler = async () => {
-    // console.log(name, email, password, phone, profession, confirmPassword);
+  const submitHandler = async (e) => {
+    e.preventDefault();
 
     if (
       !name ||
@@ -24,14 +30,27 @@ const Signup = () => {
       !phone ||
       !profession ||
       !password ||
-      !confirmPassword
+      !confirmPassword ||
+      !tick
     ) {
-      alert("Please fill all the fields");
+      toast({
+        title: "Please fill all the field!",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
       return;
     }
 
     if (password !== confirmPassword) {
-      alert("Confirm Password do not match");
+      toast({
+        title: "Confirm Password do not match!",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
       return;
     }
 
@@ -44,11 +63,24 @@ const Signup = () => {
         password
       });
 
-      //console.log(res.data);
-      alert("User Registration successfull");
+      toast({
+        title: "Account created.",
+        description: "We've created your account for you.",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+
       navigate("/");
     } catch (error) {
-      alert(error.response.data.message);
+      toast({
+        title: `${error.response.data.message}!`,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
       console.log("something went wrong", error.response.data.message);
     }
   };
@@ -59,7 +91,7 @@ const Signup = () => {
         <p className="p1-text">Welcome Page</p>
         <p className="p2-text">One line text Will be here</p>
         <p className="p3-text">Sign in to continue access pages</p>
-        <p className="p4-text">Already Have An Account</p>
+        <p className="p4-text">Already Have An Account?</p>
         <div className="register-btn">
           <button className="reg-btn" onClick={() => navigate("/")}>
             Sign in
@@ -131,7 +163,14 @@ const Signup = () => {
           </form>
         </div>
         <div className="term">
-          <img src={CD} className="term-img" alt="checkbox" />
+          <div>
+            <img
+              onClick={() => setTick(!tick)}
+              src={tick ? boxSolid : box}
+              className="term-img"
+              alt="checkbox"
+            />
+          </div>
           <p className="term-text">
             I agree to Terms & Condition receiving marketing and promotional
             materials

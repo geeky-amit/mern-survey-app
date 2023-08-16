@@ -6,11 +6,16 @@ const ThemeModal = ({ themeSettingsModal }) => {
   return (
     <div className="theme-container">
       <div className="theme-header">
-        <p className="theme-header-text">Theme Settings</p>
-        <div
-          className="theme-header-close-icon"
-          onClick={themeSettingsModal}
-        ></div>
+        <div>
+          <p className="theme-header-text">Theme Settings</p>
+        </div>
+
+        <div>
+          <div
+            className="theme-header-close-icon"
+            onClick={themeSettingsModal}
+          ></div>
+        </div>
       </div>
       <div className="theme-line"></div>
       <div className="theme-box">
@@ -20,7 +25,11 @@ const ThemeModal = ({ themeSettingsModal }) => {
           >
             <label>Theme</label>
             <select className="theme-select-box">
-              <option value="select">Select</option>
+              <option value="none" selected disabled hidden>
+                Select
+              </option>
+              <option value="dark">Dark</option>
+              <option value="light">Light</option>
             </select>
           </form>
         </div>
@@ -35,7 +44,12 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>Theme Name</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">Theme 1</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="theme-1">Theme 1</option>
+                <option value="theme-2">Theme 2</option>
+                <option value="theme-3">Theme 3</option>
               </select>
             </form>
           </div>
@@ -45,7 +59,12 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>Theme Type</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">Survey</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="survey">Survey</option>
+                <option value="feedback">Feedback</option>
+                <option value="video">Video</option>
               </select>
             </form>
           </div>
@@ -55,7 +74,11 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>From Type</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">One to One</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="onetoone">One to One</option>
+                <option value="onetoone">Group</option>
               </select>
             </form>
           </div>
@@ -67,7 +90,11 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>All Question Mandatory</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">No</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
               </select>
             </form>
           </div>
@@ -77,7 +104,11 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>Enable Skip</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">Yes</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
               </select>
             </form>
           </div>
@@ -87,7 +118,11 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>Option Type</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">Box</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="box">Box</option>
+                <option value="radio">Radio</option>
               </select>
             </form>
           </div>
@@ -103,7 +138,12 @@ const ThemeModal = ({ themeSettingsModal }) => {
             >
               <label>Font</label>
               <select style={{ width: "230px" }} className="theme-select-box">
-                <option value="select">Roboto</option>
+                <option value="none" selected disabled hidden>
+                  Select
+                </option>
+                <option value="roboato">Roboto</option>
+                <option value="opensans">Open Sans</option>
+                <option value="montserat">Montserrat-Regular</option>
               </select>
             </form>
           </div>

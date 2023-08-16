@@ -6,6 +6,8 @@ const { errorHandler, notFound } = require("./Middlewares/errorHandler");
 const cors = require("cors");
 
 const userRoutes = require("./Routes/userRoutes");
+const surveyRoutes = require("./Routes/surveyRoutes");
+const questionRoutes = require("./Routes/questionRoutes");
 
 const app = express();
 app.use(cors());
@@ -21,6 +23,8 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/user", userRoutes);
+app.use("/api/survey", surveyRoutes);
+app.use("/api/question", questionRoutes);
 
 app.use(errorHandler);
 app.use(notFound);

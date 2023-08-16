@@ -1,30 +1,64 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/toast";
 import axios from "axios";
 import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-
+  const toast = useToast();
   const navigate = useNavigate();
-  const loginHandler = async () => {
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
     if (!email || !password) {
-      alert("Please enter your Email nad Password");
+      toast({
+        title: "Please enter your email and password!",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+
       return;
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/user/login", {
-        email,
-        password
+      const config = {
+        headers: {
+          "Content-type": "application/json"
+        }
+      };
+
+      const data = await axios.post(
+        "http://localhost:5000/api/user/login",
+        {
+          email,
+          password
+        },
+        config
+      );
+
+      localStorage.setItem("userInfo", JSON.stringify(data));
+
+      toast({
+        title: "Signed in successfully!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
       });
-      console.log(res);
-      alert("Login successful");
+
       navigate("/home");
     } catch (error) {
-      alert(error.response.data.message, "Please first Registered");
-      alert("Something went wrong");
+      toast({
+        title: `${error.response.data.message}!`,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
       console.log("Something went wrong", error);
     }
   };

@@ -9,7 +9,7 @@ import ThemeModal from "../Modal/ThemeModal";
 import "./CreateQuestion.css";
 import "../Header/SideHeader.css";
 
-const CreateQuestion = () => {
+const CreateQuestion = ({ user }) => {
   const navigate = useNavigate();
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [showThemeModal, setShowThemeModal] = useState(false);
@@ -34,8 +34,8 @@ const CreateQuestion = () => {
             </div>
             <div className="prev-save-btn">
               <button className="theme-btn" onClick={themeSettingsModal}>
-                <div className="theme-gear">
-                  <img src={gear} alt="gear-icon" />
+                <div>
+                  <img className="theme-gear-icn" src={gear} alt="gear-icon" />
                 </div>
                 <div className="theme-btn-text">Theme Settings</div>
               </button>
