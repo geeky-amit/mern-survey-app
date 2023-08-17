@@ -109,6 +109,8 @@ const CreateSurvey = ({ user }) => {
     }
   };
 
+  const today = new Date().toISOString().split("T")[0];
+
   return (
     <>
       <Header />
@@ -188,7 +190,8 @@ const CreateSurvey = ({ user }) => {
                       className="date-input"
                       type="date"
                       name="start-date"
-                      placeholder="DD MM YYYY"
+                      min={today}
+                      value={today}
                       onChange={(e) => setStartDate(e.target.value)}
                     />
                   </div>

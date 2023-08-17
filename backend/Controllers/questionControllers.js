@@ -2,28 +2,28 @@ const asyncHandler = require("express-async-handler");
 const Question = require("../Models/questionModel");
 
 const createQuestion = asyncHandler(async (req, res) => {
-  const { question, option1, option2, option3, option4 } = req.body;
+  const { question, optionA, optionB, optionC, optionD } = req.body;
 
-  if (!question || !option1 || !option2) {
+  if (!question || !optionA || !optionB) {
     throw new Error("Please enter all the required fields");
   }
 
   const quest = await Question.create({
     question,
-    option1,
-    option2,
-    option3,
-    option4
+    optionA,
+    optionB,
+    optionC,
+    optionD
   });
 
   if (quest) {
     res.status(201).json({
       _id: quest._id,
       questions: quest.question,
-      option1: quest.option1,
-      option2: quest.option2,
-      option3: quest.option3,
-      option4: quest.option4,
+      optionA: quest.optionA,
+      optionB: quest.optionB,
+      optionC: quest.optionC,
+      optionD: quest.optionD,
       surveyName: quest.surveyName
     });
   } else {

@@ -6,19 +6,19 @@ const QuestionSchema = mongoose.Schema(
       type: String,
       required: true
     },
-    option1: {
+    optionA: {
       type: String,
       required: true
     },
-    option2: {
+    optionB: {
       type: String,
       required: true
     },
-    option3: {
+    optionC: {
       type: String,
       default: "none"
     },
-    option4: {
+    optionD: {
       type: String,
       default: "none"
     },

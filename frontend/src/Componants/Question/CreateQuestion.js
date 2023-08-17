@@ -5,17 +5,77 @@ import { useNavigate } from "react-router-dom";
 import gear from "../../Assets/gear-white.svg";
 import QuestionType from "../Modal/QuestionType";
 import ThemeModal from "../Modal/ThemeModal";
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 import "./CreateQuestion.css";
 import "../Header/SideHeader.css";
 
 const CreateQuestion = ({ user }) => {
   const navigate = useNavigate();
+  const toast = useToast();
   const [showQuestionModal, setShowQuestionModal] = useState(false);
   const [showThemeModal, setShowThemeModal] = useState(false);
 
+  const [question, setQuestion] = useState("");
+  const [optionA, setOptionA] = useState("");
+  const [optionB, setOptionB] = useState("");
+  const [optionC, setOptionC] = useState("");
+  const [optionD, setOptionD] = useState("");
+
   const questionModal = () => setShowQuestionModal(!showQuestionModal);
   const themeSettingsModal = () => setShowThemeModal(!showThemeModal);
+
+  const questionHandler = async () => {
+    if (!question || !optionA || !optionB) {
+      toast({
+        title: "Please fill all the fields!",
+        status: "warning",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+      return;
+    }
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${user.token}`
+        }
+      };
+
+      await axios.post(
+        "http://localhost:5000/api/question/createQuestion",
+        {
+          question,
+          optionA,
+          optionB,
+          optionC,
+          optionD
+        },
+        config
+      );
+
+      toast({
+        title: "Question Created Successfully!",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+    } catch (error) {
+      toast({
+        title: `${error.response.message}!`,
+        status: "error",
+        duration: 4000,
+        isClosable: true,
+        position: "top"
+      });
+      console.log("Something went wrong", error);
+    }
+  };
 
   return (
     <>
@@ -52,7 +112,9 @@ const CreateQuestion = ({ user }) => {
           </div>
           <div className="question-container-box">
             <div className="qst-num-container">
-              <p className="qst-num-text">Q 1</p>
+              <div>
+                <p className="qst-num-text">Q 1</p>
+              </div>
               <div className="qst-val-box">
                 <form>
                   <label className="qst-label">Question</label>
@@ -61,6 +123,7 @@ const CreateQuestion = ({ user }) => {
                     name="question"
                     placeholder="Enter Question"
                     className="qst-input"
+                    onChange={(e) => setQuestion(e.target.value)}
                   />
                 </form>
                 <form
@@ -72,26 +135,74 @@ const CreateQuestion = ({ user }) => {
                 >
                   <div className="radio-opt">
                     <div>
-                      <input type="radio" />
+                      <label className="opt-lbl-qst">Option A:</label>
                     </div>
                     <div>
-                      <label className="label-qst-text">Value</label>
+                      <input
+                        style={{
+                          width: "200px",
+                          height: "20px",
+                          border: "1px solid #CCCCCC",
+                          "border-radius": "4px",
+                          font: "normal normal normal 12px/22px Open Sans"
+                        }}
+                        type="text"
+                        onChange={(e) => setOptionA(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className="radio-opt">
                     <div>
-                      <input type="radio" />
+                      <label className="opt-lbl-qst">Option B:</label>
                     </div>
                     <div>
-                      <label className="label-qst-text">Value</label>
+                      <input
+                        style={{
+                          width: "200px",
+                          height: "20px",
+                          border: "1px solid #CCCCCC",
+                          "border-radius": "4px",
+                          font: "normal normal normal 12px/22px Open Sans"
+                        }}
+                        type="text"
+                        onChange={(e) => setOptionB(e.target.value)}
+                      />
                     </div>
                   </div>
                   <div className="radio-opt">
                     <div>
-                      <input type="radio" />
+                      <label className="opt-lbl-qst">Option C:</label>
                     </div>
                     <div>
-                      <label className="label-qst-text">Value</label>
+                      <input
+                        style={{
+                          width: "200px",
+                          height: "20px",
+                          border: "1px solid #CCCCCC",
+                          "border-radius": "4px",
+                          font: "normal normal normal 12px/22px Open Sans"
+                        }}
+                        type="text"
+                        onChange={(e) => setOptionC(e.target.value)}
+                      />
+                    </div>
+                  </div>
+                  <div className="radio-opt">
+                    <div>
+                      <label className="opt-lbl-qst">Option D:</label>
+                    </div>
+                    <div>
+                      <input
+                        style={{
+                          width: "200px",
+                          height: "20px",
+                          border: "1px solid #CCCCCC",
+                          "border-radius": "4px",
+                          font: "normal normal normal 12px/22px Open Sans"
+                        }}
+                        type="text"
+                        onChange={(e) => setOptionD(e.target.value)}
+                      />
                     </div>
                   </div>
                 </form>
@@ -104,7 +215,9 @@ const CreateQuestion = ({ user }) => {
             </div>
           </div>
           <div className="question-add">
-            <button className="qst-add-btn">Add question</button>
+            <button className="qst-add-btn" onClick={questionHandler}>
+              Add question
+            </button>
           </div>
         </div>
       </div>

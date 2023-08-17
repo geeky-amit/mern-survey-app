@@ -39,7 +39,11 @@ const QuestionType = ({ questionModal }) => {
                 color: "#2A86C7"
               }}
             >
+              <option value="none" selected disabled hidden>
+                Select
+              </option>
               <option value="1">Multiple Choice</option>
+              <option value="2">Single Choice</option>
             </select>
           </form>
         </div>
