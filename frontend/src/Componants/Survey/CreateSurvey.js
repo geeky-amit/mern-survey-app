@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Header from "../Header/Header";
 import SideHeader from "../Header/SideHeader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useToast } from "@chakra-ui/react";
+import uploadImg from "../../Assets/file-upload.png";
 
 import "../Header/SideHeader.css";
 import "./CreateSurvey.css";
@@ -21,12 +22,16 @@ const CreateSurvey = ({ user }) => {
   const [otherCriteria, setOtherCriteria] = useState();
   const [surveyPicture, setSurveyPicture] = useState();
 
+  const [image, setImage] = useState();
+  const uploadRef = useRef();
+
   const imageHandler = (pic) => {
     if (
       pic.type === "image/jpeg" ||
       pic.type === "image/png" ||
       pic.type === "image/jpg"
     ) {
+      setImage(pic);
       const data = new FormData();
       data.append("file", pic);
       data.append("upload_preset", "survey-app");
@@ -107,6 +112,10 @@ const CreateSurvey = ({ user }) => {
 
       console.log("Something went wrong", error);
     }
+  };
+
+  const handleImageClick = () => {
+    uploadRef.current.click();
   };
 
   const today = new Date().toISOString().split("T")[0];
@@ -221,12 +230,43 @@ const CreateSurvey = ({ user }) => {
                 </div>
                 <div className="upload-container">
                   <label>Upload Image</label>
+                  <div
+                    className="upload-img-box"
+                    style={{
+                      width: "100%",
+                      height: "150px",
+                      border: "1px solid #cccccc",
+                      borderRadius: "4px"
+                    }}
+                    onClick={handleImageClick}
+                  >
+                    {image ? (
+                      <img
+                        style={{
+                          width: "100%",
+                          height: "148px"
+                        }}
+                        src={URL.createObjectURL(image)}
+                      />
+                    ) : (
+                      <img
+                        style={{
+                          height: "148px",
+                          marginLeft: "140px"
+                        }}
+                        src={uploadImg}
+                      />
+                    )}
+                  </div>
+
                   <input
                     className="file-input"
                     type="file"
                     accept="image/"
                     placeholder="Upload Image"
+                    ref={uploadRef}
                     onChange={(e) => imageHandler(e.target.files[0])}
+                    style={{ display: "none" }}
                   />
                 </div>
               </form>
