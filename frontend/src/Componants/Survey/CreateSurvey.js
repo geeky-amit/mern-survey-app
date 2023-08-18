@@ -202,6 +202,7 @@ const CreateSurvey = ({ user }) => {
                         className="date-input"
                         type="date"
                         name="start-date"
+                        min={today}
                         placeholder="DD MM YYYY"
                         onChange={(e) => setEndDate(e.target.value)}
                       />

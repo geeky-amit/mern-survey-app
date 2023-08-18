@@ -63,6 +63,34 @@ const getSurveys = asyncHandler(async (req, res) => {
   }
 });
 
+const getSurveyById = asyncHandler(async (req, res) => {
+  const id = req.params;
+
+  if (id) {
+    const data = await Survey.findOne({ _id: new mongodb.ObjectId(id) });
+    res.status(200).json(data);
+  } else {
+    res.status(500);
+    throw new Error("No Survey found");
+  }
+});
+
+const updateSurvey = asyncHandler(async (req, res) => {
+  const _id = req.params.id;
+
+  if (_id) {
+    const surveyInfo = req.body;
+    const survey = await Survey.findByIdAndUpdate(_id, surveyInfo, {
+      new: true
+    });
+
+    res.status(200).json(survey);
+  } else {
+    res.status(500);
+    throw new Error("Something wend wrong");
+  }
+});
+
 const deleteSurvey = asyncHandler(async (req, res) => {
   const id = req.params.id;
 
@@ -75,4 +103,10 @@ const deleteSurvey = asyncHandler(async (req, res) => {
   }
 });
 
-module.exports = { createSurvey, getSurveys, deleteSurvey };
+module.exports = {
+  createSurvey,
+  getSurveys,
+  deleteSurvey,
+  updateSurvey,
+  getSurveyById
+};

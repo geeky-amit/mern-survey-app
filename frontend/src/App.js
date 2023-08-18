@@ -7,6 +7,7 @@ import CreateSurvey from "./Componants/Survey/CreateSurvey";
 import CreateQuestion from "./Componants/Question/CreateQuestion";
 import Preview from "./Componants/Preview/Preview";
 // import UserProvider from "./Context/UserProvider";
+
 import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-    setUser(userInfo);
+    setUser(userInfo.data);
   }, []);
   return (
     <BrowserRouter>
